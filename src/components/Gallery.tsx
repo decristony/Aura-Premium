@@ -47,7 +47,7 @@ export default function Gallery() {
               key={result.id}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.2 }}
+              transition={{ duration: 0.8 }}
               viewport={{ once: true }}
               className="group"
             >
