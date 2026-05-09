@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ShoppingCart, Flower } from "lucide-react";
+import { Menu, X, Flower } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export default function Navbar() {
@@ -61,9 +61,6 @@ export default function Navbar() {
 
         {/* Right Actions (Desktop) */}
         <div className="flex items-center space-x-6">
-          <button className="w-10 h-10 rounded-full bg-softBlack/5 flex items-center justify-center hover:bg-gold/10 transition-colors">
-            <ShoppingCart className="w-4 h-4 text-softBlack" />
-          </button>
           <a
             href="#contact"
             className="hidden md:block bg-softBlack text-white px-8 py-3 rounded-md text-[10px] uppercase tracking-widest font-bold hover:bg-gold transition-all"
