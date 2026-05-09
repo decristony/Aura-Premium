@@ -31,7 +31,7 @@ export default function Hero() {
               <motion.a 
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                href="#contact" 
+                href="#services" 
                 className="bg-softBlack text-white px-10 py-5 rounded-md text-[10px] uppercase tracking-widest font-bold hover:bg-gold transition-all shadow-xl"
               >
                 Explorar Procedimentos
