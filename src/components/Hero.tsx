@@ -2,92 +2,97 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
-import { MessageCircle, ArrowRight } from "lucide-react";
+import { Star } from "lucide-react";
 import { useRef } from "react";
 
 export default function Hero() {
-  const containerRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end start"],
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.2]);
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-
   return (
-    <section 
-      id="home" 
-      ref={containerRef}
-      className="relative h-screen w-full flex items-center justify-center overflow-hidden"
-    >
-      {/* Background Image with Overlay */}
-      <motion.div style={{ y, scale }} className="absolute inset-0 z-0">
-        <Image
-          src="/assets/hero_bg.png"
-          alt="Clínica Liora Aura"
-          fill
-          priority
-          className="object-cover"
-        />
-        <div className="absolute inset-0 bg-black/30 backdrop-blur-[2px]" />
-        <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-transparent to-white" />
-      </motion.div>
+    <section id="home" className="relative min-h-screen flex items-center overflow-hidden bg-[#F2EBE3]">
+      {/* Right Background Accent */}
+      <div className="absolute top-0 right-0 w-1/2 h-full bg-[#D1A082]/10 -skew-x-6 transform origin-top-right hidden lg:block"></div>
 
-      {/* Content */}
-      <motion.div 
-        style={{ opacity }}
-        className="container-custom relative z-10 text-center"
-      >
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: "easeOut" }}
-          className="max-w-4xl mx-auto"
-        >
-          <span className="inline-block text-white/80 uppercase tracking-[0.5em] text-xs mb-6 font-semibold">
-            Beleza Natural & Ciência Moderna
-          </span>
-          <h1 className="text-6xl md:text-8xl font-playfair text-white mb-8 leading-[1.1]">
-            Realce sua beleza com <span className="italic">naturalidade.</span>
-          </h1>
-          <p className="text-lg md:text-xl text-white/90 font-light mb-12 max-w-2xl mx-auto leading-relaxed">
-            Tratamentos modernos, atendimento personalizado e resultados que valorizam quem você é de verdade.
-          </p>
+      <div className="container-custom pt-20 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Left Content */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+          >
+            <h1 className="text-7xl md:text-[8rem] font-playfair font-black leading-[0.85] text-softBlack mb-8">
+              CUIDADO<br />
+              <span className="text-gold italic">REFINADO</span>
+            </h1>
+            <p className="text-softBlack/60 text-lg font-light leading-relaxed mb-10 max-w-md">
+              Descubra a harmonia perfeita entre ciência e bem-estar. Protocolos exclusivos desenhados para realçar sua beleza natural com máxima sofisticação.
+            </p>
+            
+            <div className="flex flex-wrap gap-4 mb-12">
+              <motion.a 
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                href="#contact" 
+                className="bg-softBlack text-white px-10 py-5 rounded-md text-[10px] uppercase tracking-widest font-bold hover:bg-gold transition-all shadow-xl"
+              >
+                Explorar Procedimentos
+              </motion.a>
+              <motion.a 
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                href="#contact" 
+                className="border border-softBlack text-softBlack px-10 py-5 rounded-md text-[10px] uppercase tracking-widest font-bold hover:bg-softBlack hover:text-white transition-all"
+              >
+                Contato
+              </motion.a>
+            </div>
 
-          <div className="flex flex-col md:flex-row items-center justify-center gap-6">
-            <motion.button
-              whileHover={{ scale: 1.05, backgroundColor: "#A6865E" }}
-              whileTap={{ scale: 0.95 }}
-              className="group bg-gold text-white px-10 py-5 rounded-full text-xs uppercase tracking-widest font-bold flex items-center gap-3 premium-shadow transition-all duration-300"
-            >
-              Agendar Avaliação
-              <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-            </motion.button>
-            <motion.button
-              whileHover={{ scale: 1.05, backgroundColor: "rgba(255,255,255,0.2)" }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-white/10 backdrop-blur-md border border-white/20 text-white px-10 py-5 rounded-full text-xs uppercase tracking-widest font-bold flex items-center gap-3 transition-all duration-300"
-            >
-              Falar no WhatsApp
-              <MessageCircle size={18} />
-            </motion.button>
-          </div>
-        </motion.div>
-      </motion.div>
+            {/* Social Proof */}
+            <div className="flex items-center gap-4">
+              <div className="flex -space-x-3">
+                <div className="w-12 h-12 rounded-full border-4 border-[#F2EBE3] overflow-hidden relative">
+                  <Image src="https://i.pravatar.cc/150?u=1" alt="User" fill className="object-cover" />
+                </div>
+                <div className="w-12 h-12 rounded-full border-4 border-[#F2EBE3] overflow-hidden relative">
+                  <Image src="https://i.pravatar.cc/150?u=2" alt="User" fill className="object-cover" />
+                </div>
+                <div className="w-12 h-12 rounded-full border-4 border-[#F2EBE3] overflow-hidden relative">
+                  <Image src="https://i.pravatar.cc/150?u=3" alt="User" fill className="object-cover" />
+                </div>
+              </div>
+              <div>
+                <div className="flex gap-1 text-gold mb-1">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} size={12} className="fill-gold" />
+                  ))}
+                </div>
+                <p className="text-[10px] text-softBlack/40 font-bold uppercase tracking-widest">Mais de 10.000 pacientes felizes</p>
+              </div>
+            </div>
+          </motion.div>
 
-      {/* Scroll Indicator */}
-      <motion.a
-        href="#about"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 1 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 group cursor-pointer"
-      >
-        <span className="text-[10px] uppercase tracking-widest text-softBlack/40 font-bold group-hover:text-gold transition-colors">Descobrir</span>
-        <div className="w-[1px] h-12 bg-gradient-to-b from-gold to-transparent group-hover:h-16 transition-all duration-500" />
-      </motion.a>
+          {/* Right Visual */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.2, ease: "easeOut" }}
+            className="relative flex items-center justify-center"
+          >
+            <div className="relative w-full max-w-lg aspect-[4/5] rounded-[3rem] overflow-hidden shadow-2xl">
+              <Image 
+                src="/assets/hero_refined_aura.png" 
+                alt="Hero Image" 
+                fill 
+                className="object-cover"
+                priority
+              />
+            </div>
+            
+            {/* Decorative Blurs */}
+            <div className="absolute -top-10 -right-10 w-48 h-48 bg-gold/5 rounded-full blur-3xl -z-10"></div>
+            <div className="absolute bottom-10 -right-10 w-64 h-64 bg-softBlack/5 rounded-full blur-3xl -z-10"></div>
+          </motion.div>
+        </div>
+      </div>
     </section>
   );
 }
